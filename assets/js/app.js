@@ -84,15 +84,18 @@ function createAddList() {
     var btnAddList = document.createElement('span');
 
     btnAddList.setAttribute('class', 'btn-anadir-list');
-    btnAddList.appendChild(document.createTextNode('Añadir nueva lista...'));
+    var newlist = document.createTextNode('Añadir nueva lista...')
+    btnAddList.appendChild(newlist);
     container.appendChild(btnAddList);
     btnAddList.addEventListener('click', trello);
 };
 
 function createTask() {
-    //var listaIni = this.parentNode;
-    var listaIni = document.createElement('div');
-   // alert(listaIni.NodeType)
+    var target = document.getElementsByClassName('lista')[0];
+
+    //var target = this.parentNode;
+    //var target = document.createElement('div');
+    //alert(target.NodeType)
     var textArea = document.createElement('textarea');
     var buttonTextArea = document.createElement('button');
 
@@ -101,17 +104,20 @@ function createTask() {
 
     var textoButton = document.createTextNode('Añadir');
 
-    listaIni.appendChild(textArea);
-    listaIni.appendChild(buttonTextArea);
+    target.appendChild(textArea);
+    target.appendChild(buttonTextArea);
     buttonTextArea.appendChild(textoButton);
 
     // Al hacer click en el boton obtengo la data ingresada en la tarjeta
     buttonTextArea.addEventListener('click', function() {
         var textAreaValue = document.getElementById('text-area').value;
         console.log(textAreaValue);
+        var eliminar = document.getElementsByClassName('add-card')[0];
 
-        listaIni.removeChild(textArea);
-        listaIni.removeChild(buttonTextArea);
+
+        target.removeChild(textArea);
+        target.removeChild(buttonTextArea);
+        target.removeChild(eliminar);
 
         var card = document.createElement('div');
         var cardText = document.createTextNode(textAreaValue);
@@ -119,19 +125,19 @@ function createTask() {
         card.setAttribute("class", "card");
 
         card.appendChild(cardText);
-        listaIni.appendChild(card);
+        target.appendChild(card);
 
         // Crear div añadir tarjeta
-        var addCard = document.createElement('div');
-        var addCardTexto = document.createTextNode('Añadir una tarjeta...');
+        var add = document.createElement('div');
+        var addTexto = document.createTextNode('Añadir una tarjeta...');
 
-        addCard.setAttribute("class", "add-card");
+        add.setAttribute("class", "add-card");
 
-        addCard.appendChild(addCardTexto);
-        listaIni.appendChild(addCard);
+        add.appendChild(addTexto);
+        target.appendChild(add);
         //Llamo a la misma funcion cuantas veces quiera
 
-        addCard.addEventListener('click', createTask);
+        add.addEventListener('click', createTask);
     });
 
 

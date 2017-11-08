@@ -55,12 +55,12 @@ nav{
 .lista {
     cursor: pointer;
     background: #E2E4E6;
-    padding: 20px ;
-    border: 30px solid #0262a7;
-    border-radius: 10px;
+    padding: 20px;
+    border-radius: 5px;
     display: inline-block;
     color: black;
     width: 12em;
+    margin: 20px;
 }
 
 .removeDivFather{
@@ -87,10 +87,10 @@ nav{
 
 .card {
     background: white;
-    padding: 20px;
+    padding: 5px;
     border-radius: 3px;
     font-size: 13px;
-    margin-bottom: 5px;
+    margin: 10px;
 }
 input{
       
