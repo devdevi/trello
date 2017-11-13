@@ -32,7 +32,6 @@ function trello(){
     divFather.appendChild(input);
     divFather.appendChild(button);
     container.appendChild(divFather)
-   alert('holi');
    console.log(input)
 }
 
