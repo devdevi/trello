@@ -23,11 +23,23 @@ function trello(){
     //texto dentro del boton
     button.appendChild(textoButton);
     //Agregar Evento al boton
-    button.addEventListener('click',function(){
+    button.addEventListener('click',title)
+  //Eliminamos el titulo de la primera lista.
+    var remove = document.getElementsByClassName('btn-anadir-list')[0];
+    container.removeChild(remove);
+
+    //Agregamos todo al div father!
+    divFather.appendChild(input);
+    divFather.appendChild(button);
+    container.appendChild(divFather)
+   alert('holi');
+   console.log(input)
+}
+
+    function title() {
         var container = document.getElementById('container');
 
     // TITULO  OBTENEMOS VALOR INGRESADO EN EL PRIMER IMPUT 
-   // var title = this.previousSibling.value; pedir explicacion!!
   var title = document.getElementsByClassName('inputTitle')[0].value;
     console.log(title)
 
@@ -37,6 +49,7 @@ function trello(){
     var texto = document.createTextNode(title);
 
     lista.setAttribute("class", "lista");
+     lista.setAttribute("id", "lista");
 
 
     // Remover el input y el boton
@@ -53,29 +66,17 @@ function trello(){
 
     addCard.setAttribute("class", "add-card");
 
-    // Una vez que se crea la lista doy la posibilidad a crear una nueva
+    // posibilidad a crear una nueva llamando la funcion denuevo
     createAddList();
 
     addCard.appendChild(addCardTexto);
     lista.appendChild(addCard);
 
-    addCard.addEventListener('click', createTask);
+    addCard.addEventListener('click', newTarget);
 
 
-    })
-
-
-    //Eliminamos el titulo de la primera lista.
-    var remove = document.getElementsByClassName('btn-anadir-list')[0];
-    container.removeChild(remove);
-
-    //Agregamos todo al div father!
-    divFather.appendChild(input);
-    divFather.appendChild(button);
-    container.appendChild(divFather)
-   alert('holi');
-   console.log(input)
-}
+    }
+    
 //BOTON PARA CREAR UNA NUEVA LISTA SE ACTIVA AL GUARDAR EL TITULO DE LA PRIMER LISTA 
 //Vuelve a llamar la funcion principal
 
@@ -90,12 +91,11 @@ function createAddList() {
     btnAddList.addEventListener('click', trello);
 };
 
-function createTask() {
-    var target = document.getElementsByClassName('lista')[0];
+function newTarget() {
 
-    //var target = this.parentNode;
-    //var target = document.createElement('div');
-    //alert(target.NodeType)
+    var target = document.getElementById('lista');
+    console.log(target);
+
     var textArea = document.createElement('textarea');
     var buttonTextArea = document.createElement('button');
 
@@ -109,7 +109,8 @@ function createTask() {
     buttonTextArea.appendChild(textoButton);
 
     // Al hacer click en el boton obtengo la data ingresada en la tarjeta
-    buttonTextArea.addEventListener('click', function() {
+    buttonTextArea.addEventListener('click',function () {
+         var target = document.getElementById('lista');
         var textAreaValue = document.getElementById('text-area').value;
         console.log(textAreaValue);
         var eliminar = document.getElementsByClassName('add-card')[0];
@@ -137,9 +138,6 @@ function createTask() {
         target.appendChild(add);
         //Llamo a la misma funcion cuantas veces quiera
 
-        add.addEventListener('click', createTask);
+        add.addEventListener('click', newTarget);
     });
-
-
-
 }
